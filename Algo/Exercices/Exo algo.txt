@@ -1,0 +1,224 @@
+Exo 3.1 et 3.4
+Variables nb ENTIER
+
+Structure
+	Afficher "choisir un nombre"
+	Lire nb
+	
+	Si nb > 0
+		Afficher "Le nombre est positif"
+	Sinon si nb < 0
+		Afficher "Le nombre est négatif"
+	Sinon si nb == 0
+		Afficher "Le nombre est nul"
+	Fin Si
+-------------------------------------------
+Exo 3.2 et 3.5
+Variables nb1,nb2 ENTIER
+
+Structure
+	Afficher "choisir un nombre"
+	Lire nb1
+	Lire nb2
+	
+	Si (nb1 > 0 ET nb2 > 0) OU (nb1 < 0 ET nb2 < 0)
+		Afficher "C'est positif"
+	Sinon Si (nb1 == 0 OU nb2 == 0)
+		Afficher "C'est nul"
+	Sinon
+		Afficher "C'est négatif"
+	
+	Si (nb1 > 0 ET nb2 < 0) OU (nb1 < 0 ET nb2 > 0)
+		Afficher "C'est négatif"
+	Sinon Si (nb1 == 0 OU nb2 == 0)
+		Afficher "C'est nul"
+	Sinon
+		Afficher "C'est positif"
+---------------------------------------------
+Exo 3.6
+Variables age ENTIER
+
+Structure
+	Afficher "Quel est l'age de votre enfant ?"
+	Lire age
+	
+	Si age >= 6 ET age <= 7
+		Afficher "Poussin"
+	Si age >= 8 ET age <= 9
+		Afficher "Pupille"
+	Si age >= 10 ET age <= 11
+		Afficher "Minime"
+	Si age >= 12
+		Afficher "Cadet"
+	Fin Si
+	Fin
+---------------------------------------------
+4.1
+Si !(Tutu <= Toto + 4 ET Tata != "OK") Alors
+	Tutu <- Tutu + 1
+Sinon 
+	Tutu <- Tutu - 1
+Finsi
+------------------------------------
+4.2
+Variables H, M ENTIER
+
+Structure
+	Afficher "Entrer heure et minute"
+	Lire H 
+	Lire M 
+	
+	Si M = 59
+		Afficher "Dans une minute, il sera" H+1 "heure(s) 00"
+	Sinon si M < 59
+		Afficher "Dans une minute, il sera" H "heure(s)" M+1
+	Sinon si H = 23 ET M = 59
+		Afficher "Dans une minute, il sera 00 heure(s) 00"
+	Fin si
+	Fin
+--------------------------------
+4.3
+Variables H, M, S ENTIER
+
+Structure
+	Afficher "Entrer heure, minute et seconde"
+	Lire H 
+	Lire M 
+	Lire S
+	
+	Si S = 59 ET M = 59
+		Afficher "Dans une minute, il sera" H+1 heure(s) 0 minute et 0 seconde(s)"
+	Sinon si S = 59 ET M < 59
+		Afficher "Dans une minute, il sera" H heure(s) M+1 minute et 0 seconde(s)"
+	Sinon si S < 59 ET M < 59
+		Afficher "Dans une minute, il sera" H heure(s) M minute(s) et S+1 seconde(s)"
+	Sinon si H = 23 ET M = 59 ET S = 59
+		Afficher "Dans une minute, il sera" 00 heure(s) 00 minute(s) et 00 seconde(s)"
+	Fin si
+	Fin
+-------------------------------------
+4.4
+Variables P ENTIER
+
+Structure
+	Afficher "Combien de photocopies voulez vous faire ?"
+	Lire P
+	
+	Si P <= 10
+		Afficher "Cela vous coutera P*0.10 €"
+	Sinon si P > 10 ET <= 20
+		Afficher "Cela vous coutera 1+(P-10)*0.09 €"
+	Sinon si P > 20
+		Afficher "Cela vous coutera 1+1.8+(P-10)*0.08 €"
+	Finsi
+	Fin
+----------------------------------------
+4.5
+Variables age ENTIER, sexe CHAINE
+
+Structure
+	Afficher "Quel est votre age et votre sexe ?"
+	Lire age
+	Lire sexe
+	
+	Si sexe = "homme" ET age > 20
+		Afficher "Vous devez payer l'impôt"
+	Sinon si sexe = "femme" ET (age >= 18 OU <= 35)
+		Afficher "Vous devez payer l'impôt"
+	Sinon si !(sexe = "homme" ET age > 20) OU !(sexe = "femme" ET (age >= 18 OU <= 35))
+		Afficher "Vous ne payer pas l'impôt"
+	Finsi
+	Fin
+-----------------------------------
+4.6
+Variables C1,C2,C3,C4 DECIMAL
+
+Structure
+	Afficher "Quel sont les résultats des candidats ?"
+	Lire C1
+	Lire C2
+	Lire C3
+	Lire C4
+	
+	Si C1 > 50
+		Afficher "C1 est élu au premier tour!"
+	Sinon si C1 > (C2 ET C3 ET C4)
+		Afficher "Ballotage favorable"
+	Sinon si C1 < (C2 OU C3 OU C4)
+		Afficher "Ballotage défavorable"
+	Sinon si C1 < 12.5
+		Afficher "Battu"
+	Finsi
+	Fin
+-----------------------------------------
+4.7
+Variables
+	situation : CHAINE
+	c1, c2, c3 : BOOLEEN
+	age, accidents, anneePerm, fidelite : DECIMAL
+
+Structure
+	
+	c1 <- age >= 25
+	c2 <- anneePerm >= 2
+	c3 <- fidelite > 5
+	
+	Si (!c1 ET !c2)
+		Si accidents > 0
+			Afficher "Refusé !"
+		Sinon
+			situation <- " Rouge"
+	Sinon si (!c1 ET c2) OU (c1 ET !c2)
+		Si accidents == 0
+			situation <- "Orange"
+		Sinon si accidents == 1
+			situation <- "Rouge"
+		Sinon
+			Afficher "Refusé !"
+	Sinon si (c1 ET c2)
+		Si accidents == 0
+			situation <- "Vert"
+		Sinon si accidents == 1
+			situation <- "Orange"
+		Sinon si accidents == 2
+			situation <- "Rouge"
+		Sinon 
+			Afficher "Refusé !"
+	Si c3
+		Si situation == "Rouge"
+			Afficher "Orange
+		Sinon si situation == "Orange"
+			Afficher "Vert"
+		Sinon si situation == "Vert"
+			Afficher "Bleu"
+		Fin
+	Finsi
+		Afficher situation
+	Fin
+-------------------------------------------
+4.8
+Variables J, M, A, JMAX: ENTIER
+	bisextile : BOOLEEN
+	
+Structure
+	Lire J
+	Lire M
+	Lire A 
+	
+	JMAX <- 30
+	bisextile <- (A % 4 == 0 ET !(A % 100 == 0) OU (A % 400 == 0)
+	Si (M == 1 OU M == 3 OU M == 5 OU M == 7 OU M == 8 OU M == 10 OU  M == 12)
+		JMAX <- 31
+	Sinon si (M == 2 ET bisextile)
+		JMAX <- 29
+	Sinon si (M == 2)
+		JMAX <- 28
+	Fin si
+	
+	Si (jour <= JMAX ET J > 0 ET M <= 12 ET mois > 0)
+		Afficher "date valide"
+	Sinon
+		Afficher "date non valide"
+	Finsi
+	Fin
+------------------------------------
